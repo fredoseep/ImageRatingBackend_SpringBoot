@@ -1,0 +1,16 @@
+CREATE TABLE IF NOT EXISTS tasks (
+ id VARCHAR(36) PRIMARY KEY,
+ request_id VARCHAR(100) UNIQUE NOT NULL,
+ fingerprint VARCHAR(64) NOT NULL,
+ description VARCHAR(4000) NOT NULL,
+ mime VARCHAR(30) NOT NULL,
+ image BLOB NOT NULL,
+ status VARCHAR(20) NOT NULL,
+ reason VARCHAR(40),
+ created DOUBLE PRECISION NOT NULL,
+ deadline DOUBLE PRECISION NOT NULL,
+ score DOUBLE PRECISION,
+ comment VARCHAR(4000),
+ completed DOUBLE PRECISION
+);
+CREATE INDEX IF NOT EXISTS idx_tasks_created ON tasks(created);
